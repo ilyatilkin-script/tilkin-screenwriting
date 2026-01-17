@@ -78,6 +78,28 @@
     align-items: center; justify-content: center; 
 }
 #lightbox img { max-width: 90%; max-height: 90%; border: 2px solid #fff; }
+        .gallery-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
+    margin-top: 20px;
+}
+.gallery-item { 
+    aspect-ratio: 3/2; 
+    overflow: hidden; 
+    border: 1px solid var(--border); 
+    cursor: zoom-in; 
+    border-radius: 4px;
+    background: #1a1a1a;
+}
+.gallery-item img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+}
+@media (max-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -156,33 +178,54 @@
         </div>
     </section>
 <section>
-    <h2>Фотографии</h2>
+    <h2>backstage</h2>
     <div class="gallery-grid">
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Арсеньев_Playback.JPG"></div>
+        <div class="gallery-item" onclick="showImg(this)"><img src="img/парма_playback.jpeg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Арсеньев_с.jpg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Арсеньев_хлопушка.jpg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Воин_playback.jpeg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Годунов_playback.jpeg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Голем_хлопушка.jpeg"></div>
-        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Короче02.png"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Крестный_хлопушка.jpeg"></div>
-        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/МН.jpeg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Парма_хлопушка.jpeg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Протокол_хлопушка.jpg"></div>
-        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Стар.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/доска.jpeg"></div>
+
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Александрова_Коныжева.jpg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Бондарчук.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_бондарчук01.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Вержбицкий.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Дапкунайте_машков.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Иосифов.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Климова.JPG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Лютаева_Феклистов.JPEG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Махарал.JPG"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Миронов.JPG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Миронов_Киселев.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Михалкова.jpg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Панин.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Серебряков.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Смоляков.JPG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Степин.JPG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Урсуляк.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Чеботарев.JPG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_духин.jpg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/янковский.jpeg"></div>
+
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/арсеньев_зима.jpeg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/выборг01.jpg"></div>
-        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/доска.jpeg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/короче01.jpeg"></div>
-        <div class="gallery-item" onclick="showImg(this)"><img src="img/парма_playback.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Короче02.png"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/ненастье.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/пилот01.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/пилот2.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/пилот_жюри.jpg"></div>
         <div class="gallery-item" onclick="openPhoto(this)"><img src="img/распутин.jpeg"></div>
-        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/янковский.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Стар.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/МН.jpeg"></div>
     </div>
 </section>
-
 <div id="lightbox" onclick="this.style.display='none'"><img id="limg"></div>
     <footer>
         <div class="socials">
