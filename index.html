@@ -100,6 +100,39 @@
 }
 @media (max-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+        /* Сетка галереи по 6 в ряд */
+.gallery-grid { 
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 8px; 
+    margin-top: 20px;
+}
+.gallery-item { 
+    aspect-ratio: 1/1; 
+    overflow: hidden; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    cursor: zoom-in; 
+    border-radius: 2px;
+}
+.gallery-item img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: 0.3s; 
+}
+.gallery-item img:hover { filter: brightness(1.2); }
+
+/* Адаптация под мобильные */
+@media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 600px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Окно просмотра */
+#lightbox { 
+    display: none; position: fixed; z-index: 9999; top: 0; left: 0; 
+    width: 100%; height: 100%; background: rgba(0,0,0,0.9); 
+    align-items: center; justify-content: center; 
+}
+#lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #444; }
     </style>
 </head>
 <body>
@@ -224,6 +257,8 @@
         <div class="gallery-item" onclick="openPhoto(this)"><img src="янковский.jpeg"></div>
     </div>
 </section>
+
+<div id="lightbox" onclick="this.style.display='none'"><img id="limg" src=""></div>
 <div id="lightbox" onclick="this.style.display='none'"><img id="limg"></div>
     <footer>
         <div class="socials">
@@ -241,6 +276,13 @@
         const limg = document.getElementById("limg");
         limg.src = img.src;
         lightbox.style.display = "flex";
+    }
+</script>
+    <script>
+    function openPhoto(el) {
+        var imgPath = el.querySelector('img').src;
+        document.getElementById("limg").src = imgPath;
+        document.getElementById("lightbox").style.display = "flex";
     }
 </script>
 </body>
