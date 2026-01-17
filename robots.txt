@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://ilyatilkin-script.github.io/tilkin-screenwriting/sitemap.xml
