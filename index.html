@@ -7,43 +7,68 @@
     <title>Илья Тилькин | Киносценарист и Драматург</title>
     <style>
         :root { --bg: #0d0d0d; --text: #ffffff; --secondary: #a0a0a0; --accent: #ffffff; --border: #262626; }
-        body { font-family: 'Georgia', serif; background-color: var(--bg); color: var(--text); margin: 0; line-height: 1.7; }
-        .container { max-width: 700px; margin: 0 auto; padding: 80px 20px; }
-        header { margin-bottom: 70px; display: flex; align-items: center; gap: 30px; }
-        .profile-pic { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
-        h1 { font-size: 2.5rem; font-weight: normal; margin: 0; letter-spacing: -1px; text-transform: uppercase; }
-        .profession { font-family: sans-serif; color: var(--secondary); text-transform: uppercase; letter-spacing: 4px; font-size: 0.85rem; margin-top: 5px; }
-        section { margin-bottom: 80px; }
-        h2 { font-family: sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        body { font-family: 'Georgia', serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        
+        /* ЦЕНТРИРОВАННАЯ ШАПКА */
+        header { 
+            text-align: center; 
+            margin-bottom: 80px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .profile-pic { 
+            width: 220px; /* Увеличенный размер */
+            height: 220px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid var(--border); 
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Глубина */
+        }
+        h1 { font-size: 2.8rem; font-weight: normal; margin: 0; letter-spacing: -1px; text-transform: uppercase; }
+        .profession { font-family: sans-serif; color: var(--secondary); text-transform: uppercase; letter-spacing: 5px; font-size: 0.9rem; margin-top: 10px; }
+
+        section { margin-bottom: 90px; }
+        h2 { font-family: sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        
         .film-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        .film-item { font-size: 0.95rem; padding: 15px; border: 1px solid var(--border); border-radius: 2px; }
-        .film-item span { color: var(--secondary); display: block; font-size: 0.8rem; margin-top: 4px; }
-        .link-card { display: block; text-decoration: none; color: var(--text); margin-bottom: 35px; transition: 0.3s; }
-        .link-card:hover { opacity: 0.6; transform: translateX(5px); }
-        .link-card h3 { font-size: 1.3rem; margin: 0 0 5px 0; font-weight: normal; }
-        .link-card p { font-size: 0.95rem; color: var(--secondary); margin: 0; }
-        .course-box { background: #141414; padding: 50px 40px; border: 1px solid var(--border); border-radius: 2px; }
-        .course-box h3 { font-size: 1.8rem; margin-top: 0; text-align: center; }
-        .course-features { list-style: none; padding: 0; margin: 25px 0; font-size: 0.95rem; color: var(--secondary); }
-        .course-features li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        .course-features li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
-        .pay-wrapper { text-align: center; margin-top: 30px; }
-        .pay-btn { display: inline-block; background: var(--accent); color: #000; padding: 18px 45px; text-decoration: none; font-family: sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; transition: 0.3s; }
-        .pay-btn:hover { background: #ccc; }
-        .socials { display: flex; flex-wrap: wrap; gap: 25px; font-family: sans-serif; font-size: 0.75rem; }
-        .socials a { color: var(--secondary); text-decoration: none; text-transform: uppercase; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .film-item { font-size: 1rem; padding: 20px; border: 1px solid var(--border); border-radius: 4px; background: #111; }
+        .film-item span { color: var(--secondary); display: block; font-size: 0.85rem; margin-top: 5px; }
+
+        .link-card { display: block; text-decoration: none; color: var(--text); margin-bottom: 40px; transition: 0.3s; }
+        .link-card:hover { opacity: 0.7; transform: translateY(-3px); }
+        .link-card h3 { font-size: 1.4rem; margin: 0 0 8px 0; font-weight: normal; color: var(--accent); }
+        .link-card p { font-size: 1rem; color: var(--secondary); margin: 0; }
+
+        .course-box { background: #1a1a1a; padding: 60px 40px; border: 1px solid var(--border); border-radius: 8px; text-align: center; }
+        .course-box h3 { font-size: 2rem; margin-top: 0; line-height: 1.2; }
+        .course-features { list-style: none; padding: 0; margin: 30px auto; max-width: 500px; text-align: left; font-size: 1.1rem; }
+        .course-features li { margin-bottom: 15px; padding-left: 25px; position: relative; color: var(--secondary); }
+        .course-features li::before { content: "•"; position: absolute; left: 0; color: var(--accent); }
+
+        .pay-wrapper { margin-top: 40px; }
+        .pay-btn { display: inline-block; background: var(--accent); color: #000; padding: 20px 50px; text-decoration: none; font-family: sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; border-radius: 50px; transition: 0.3s; }
+        .pay-btn:hover { background: #ddd; transform: scale(1.05); }
+
+        .socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; font-family: sans-serif; font-size: 0.8rem; }
+        .socials a { color: var(--secondary); text-decoration: none; text-transform: uppercase; border-bottom: 1px solid transparent; transition: 0.3s; padding-bottom: 5px; }
         .socials a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-        @media (max-width: 600px) { header { flex-direction: column; text-align: center; } .film-grid { grid-template-columns: 1fr; } h1 { font-size: 2rem; } }
+
+        @media (max-width: 600px) { 
+            h1 { font-size: 2rem; } 
+            .film-grid { grid-template-columns: 1fr; } 
+            .profile-pic { width: 180px; height: 180px; }
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <header>
         <img src="profile.jpg" alt="Илья Тилькин" class="profile-pic">
-        <div>
-            <h1>Илья Тилькин</h1>
-            <div class="profession">Киносценарист · Драматург</div>
-        </div>
+        <h1>Илья Тилькин</h1>
+        <div class="profession">Киносценарист · Драматург</div>
     </header>
 
     <section>
@@ -54,40 +79,42 @@
             <div class="film-item">Тихий Дон <span>Сериал, 2015</span></div>
             <div class="film-item">Спарта <span>Сериал, 2018 (Netflix)</span></div>
             <div class="film-item">Годунов <span>Сериал, 2018</span></div>
-            <div class="film-item">Григорий Р. <span>Сериал, 2014</span></div>
             <div class="film-item">Сердце Пармы <span>Фильм, 2022</span></div>
+            <div class="film-item">Григорий Р. <span>Сериал, 2014</span></div>
             <div class="film-item">Человек у окна <span>Фильм, 2010</span></div>
         </div>
+        <p style="text-align: center;"><a href="https://www.kinopoisk.ru/name/1138852/" target="_blank" style="color: var(--secondary); font-size: 0.85rem; text-decoration: none; font-family: sans-serif; border-bottom: 1px solid #333;">Весь список на Кинопоиске →</a></p>
     </section>
 
     <section>
         <h2>Интервью и материалы</h2>
-        <a href="https://youtu.be/C6F7e6XH8jc" target="_blank" class="link-card"><h3>Sheinkin40: Изнанка индустрии</h3><p>О создании масштабных проектов и профессиональном пути.</p></a>
-        <a href="https://www.spb.kp.ru/daily/27002/4064595/" target="_blank" class="link-card"><h3>КП: Метод адаптации</h3><p>Как работать с большой прозой Алексея Иванова.</p></a>
-        <a href="https://oknofest.com/novosti/ilya-tilkin-lyuboj-dialog-mozhno-vosprinimat-kak-remarku" target="_blank" class="link-card"><h3>Окно в Европу: Архитектура текста</h3><p>О языке драматургии и структуре сюжета.</p></a>
-        <a href="https://www.youtube.com/live/YmzQvRwz5T4" target="_blank" class="link-card"><h3>Эклеры Голициной: Личный путь</h3><p>О связи ритма музыки и темпоритма сценария.</p></a>
+        <a href="https://youtu.be/C6F7e6XH8jc" target="_blank" class="link-card"><h3>Sheinkin40: Изнанка индустрии</h3><p>О создании масштабных проектов, работе над «Сталинградом» и профессиональном пути.</p></a>
+        <a href="https://www.spb.kp.ru/daily/27002/4064595/" target="_blank" class="link-card"><h3>КП: Метод адаптации</h3><p>Опыт работы с прозой Алексея Иванова и превращении смыслов в визуальные образы.</p></a>
+        <a href="https://oknofest.com/novosti/ilya-tilkin-lyuboj-dialog-mozhno-vosprinimat-kak-remarku" target="_blank" class="link-card"><h3>Окно в Европу: Архитектура текста</h3><p>Профессиональный взгляд на структуру сюжета и законы современной драматургии.</p></a>
+        <a href="https://www.youtube.com/live/YmzQvRwz5T4" target="_blank" class="link-card"><h3>Эклеры Голициной: Личный путь</h3><p>Музыкальное образование как фундамент для понимания темпоритма сценария.</p></a>
     </section>
 
     <section>
         <h2>Обучение</h2>
         <div class="course-box">
             <h3>«Сценарное мастерство — универсальный навык»</h3>
+            <p style="color: var(--secondary); font-style: italic; margin-bottom: 30px;">Курс для тех, кто хочет научиться проектировать истории любой сложности.</p>
             <ul class="course-features">
-                <li>Поиск жизнеспособного замысла</li>
-                <li>Архитектура сюжета и законы драмы</li>
-                <li>Психология персонажа и искусство диалога</li>
+                <li>Поиск и проверка жизнеспособного замысла</li>
+                <li>Архитектура сюжета: от идеи до финального драфта</li>
+                <li>Психология персонажа и создание живых диалогов</li>
+                <li>Индустриальные стандарты и юридическая база</li>
             </ul>
             <div class="pay-wrapper">
-                <a href="https://yookassa.ru/my/i/aWZgui7ZSDip/l" target="_blank" class="pay-btn">Записаться на курс</a>
+                <a href="https://yookassa.ru/my/i/aWZgui7ZSDip/l" target="_blank" class="pay-btn">Узнать подробнее и записаться</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <h2>Связь</h2>
         <div class="socials">
             <a href="https://t.me/TILKIN_SCREENWRITING" target="_blank">Telegram-канал</a>
-            <a href="https://t.me/itilkin" target="_blank">Личный Telegram</a>
+            <a href="https://t.me/itilkin" target="_blank">Связаться лично</a>
             <a href="mailto:itilkin@yandex.ru">Email</a>
         </div>
     </footer>
