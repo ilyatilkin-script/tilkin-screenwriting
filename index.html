@@ -7,72 +7,32 @@
     <style>
         :root { --bg: #0d0d0d; --text: #ffffff; --secondary: #a0a0a0; --border: #262626; }
         body { font-family: 'Georgia', serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
-        
-        header { text-align: center; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center; }
-        .profile-pic { 
-            width: 200px; height: 200px; border-radius: 50%; object-fit: cover; 
-            object-position: center 10%; border: 2px solid var(--border); 
-            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        h1 { font-size: 2.2rem; font-weight: normal; margin: 0; text-transform: uppercase; letter-spacing: -1px; }
-        .profession { font-family: sans-serif; color: var(--secondary); text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; margin-top: 8px; }
-
-        section { margin-bottom: 80px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 50px; }
+        .profile-pic { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: center 10%; border: 2px solid var(--border); margin-bottom: 20px; }
+        h1 { font-size: 2rem; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
+        .profession { font-family: sans-serif; color: var(--secondary); text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem; margin-top: 10px; }
+        section { margin-bottom: 70px; }
         h2 { font-family: sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        
-        .poster-grid { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 15px; 
-        }
-        .poster-item { 
-            position: relative; border-radius: 4px; overflow: hidden; 
-            aspect-ratio: 2/3; background: #1a1a1a; border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-        }
+        .poster-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+        .poster-item { position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 2/3; border: 1px solid var(--border); transition: 0.3s; }
         .poster-item:hover { transform: scale(1.05); z-index: 2; border-color: #fff; }
         .poster-item img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .poster-info {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.95));
-            padding: 10px; opacity: 0.9;
-        }
-        .poster-info h4 { margin: 0; font-size: 0.85rem; font-weight: normal; line-height: 1.2; }
-        .poster-info span { font-size: 0.65rem; color: var(--secondary); font-family: sans-serif; display: block; margin-top: 3px; }
-
-        .link-card { display: block; text-decoration: none; color: var(--text); margin-bottom: 20px; padding: 20px; border-radius: 8px; transition: 0.3s; background: #111; border: 1px solid transparent; }
-        .link-card:hover { border-color: var(--border); background: #161616; transform: translateX(5px); }
-        .link-card h3 { margin: 0 0 5px 0; font-size: 1.2rem; font-weight: normal; }
-        .link-card p { margin: 0; color: var(--secondary); font-size: 0.9rem; }
-
-        .course-box { background: #161616; padding: 50px 30px; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
-        .course-box h3 { font-size: 1.8rem; margin-bottom: 15px; font-weight: normal; }
-        .course-box p { color: var(--secondary); margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        
-        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .btn { 
-            padding: 16px 30px; text-decoration: none; font-family: sans-serif; 
-            font-weight: bold; text-transform: uppercase; letter-spacing: 2px; 
-            font-size: 0.75rem; border-radius: 4px; transition: 0.3s; min-width: 200px;
-        }
-        .btn-white { background: #fff; color: #000; border: 1px solid #fff; }
-        .btn-white:hover { background: #ccc; }
+        .poster-info { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 8px; font-size: 0.8rem; }
+        .link-card { display: block; text-decoration: none; color: var(--text); margin-bottom: 15px; padding: 15px; border-radius: 8px; background: #111; border: 1px solid transparent; transition: 0.3s; }
+        .link-card:hover { border-color: var(--border); background: #161616; }
+        .link-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; font-weight: normal; }
+        .link-card p { margin: 0; color: var(--secondary); font-size: 0.85rem; }
+        .course-box { background: #161616; padding: 40px 20px; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
+        .btn { padding: 14px 25px; text-decoration: none; font-family: sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; border-radius: 4px; transition: 0.3s; min-width: 180px; }
+        .btn-white { background: #fff; color: #000; }
         .btn-outline { border: 1px solid var(--border); color: #fff; }
-        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
-
-        footer { text-align: center; border-top: 1px solid var(--border); padding-top: 40px; margin-top: 40px; }
-        .socials { display: flex; justify-content: center; gap: 25px; font-family: sans-serif; font-size: 0.7rem; flex-wrap: wrap; }
-        .socials a { color: var(--secondary); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .socials a:hover { color: #fff; }
-
+        footer { text-align: center; border-top: 1px solid var(--border); padding-top: 30px; margin-top: 50px; }
+        .socials { display: flex; justify-content: center; gap: 20px; font-family: sans-serif; font-size: 0.65rem; flex-wrap: wrap; }
+        .socials a { color: var(--secondary); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         @media (max-width: 900px) { .poster-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 600px) { 
-            .poster-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            h1 { font-size: 1.6rem; }
-            .btn { width: 100%; }
-        }
+        @media (max-width: 600px) { .poster-grid { grid-template-columns: repeat(2, 1fr); } .btn { width: 100%; } }
     </style>
 </head>
 <body>
@@ -86,20 +46,63 @@
     <section>
         <h2>Избранная фильмография</h2>
         <div class="poster-grid">
-            <div class="poster-item"><img src="stalingrad.jpg"><div class="poster-info"><h4>Сталинград</h4><span>2013</span></div></div>
-            <div class="poster-item"><img src="parma.jpg"><div class="poster-info"><h4>Сердце Пармы</h4><span>2022</span></div></div>
-            <div class="poster-item"><img src="tellher.jpg"><div class="poster-info"><h4>Скажи ей</h4><span>2020</span></div></div>
-            <div class="poster-item"><img src="sparta.jpg"><div class="poster-info"><h4>Спарта</h4><span>Netflix</span></div></div>
-            <div class="poster-item"><img src="librarian.jpg"><div class="poster-info"><h4>Библиотекарь</h4><span>2023</span></div></div>
-            <div class="poster-item"><img src="nenastie.jpg"><div class="poster-info"><h4>Ненастье</h4><span>2018</span></div></div>
-            <div class="poster-item"><img src="montevideo.jpg"><div class="poster-info"><h4>Единица Монтевидео</h4><span>2023</span></div></div>
-            <div class="poster-item"><img src="godunov.jpeg"><div class="poster-info"><h4>Годунов</h4><span>2018</span></div></div>
-            <div class="poster-item"><img src="don.jpg"><div class="poster-info"><h4>Тихий Дон</h4><span>2015</span></div></div>
-            <div class="poster-item"><img src="window.jpeg"><div class="poster-info"><h4>Человек у окна</h4><span>2010</span></div></div>
+            <div class="poster-item"><img src="stalingrad.jpg"><div class="poster-info">Сталинград</div></div>
+            <div class="poster-item"><img src="parma.jpg"><div class="poster-info">Сердце Пармы</div></div>
+            <div class="poster-item"><img src="tellher.jpg"><div class="poster-info">Скажи ей</div></div>
+            <div class="poster-item"><img src="sparta.jpg"><div class="poster-info">Спарта</div></div>
+            <div class="poster-item"><img src="librarian.jpg"><div class="poster-info">Библиотекарь</div></div>
+            <div class="poster-item"><img src="nenastie.jpg"><div class="poster-info">Ненастье</div></div>
+            <div class="poster-item"><img src="montevideo.jpg"><div class="poster-info">Единица Монтевидео</div></div>
+            <div class="poster-item"><img src="godunov.jpeg"><div class="poster-info">Годунов</div></div>
+            <div class="poster-item"><img src="don.jpg"><div class="poster-info">Тихий Дон</div></div>
+            <div class="poster-item"><img src="window.jpeg"><div class="poster-info">Человек у окна</div></div>
         </div>
     </section>
 
     <section>
         <h2>Материалы и интервью</h2>
-        
-        <a href="https://doc.ru/ilya-tilkin-intervyu/"
+        <a href="https://doc.ru/ilya-tilkin-intervyu/" target="_blank" class="link-card">
+            <h3>Интервью Илоне Егиазаровой</h3>
+            <p>О системных ошибках индустрии и месте автора в кинопроцессе.</p>
+        </a>
+        <a href="https://youtu.be/C6F7e6XH8jc" target="_blank" class="link-card">
+            <h3>Sheinkin40: Искусство проектирования</h3>
+            <p>Видео-разговор об архитектуре смыслов в масштабном кино.</p>
+        </a>
+        <a href="https://oknofest.com/novosti/ilya-tilkin-lyuboj-dialog-mozhno-vosprinimat-kak-remarku" target="_blank" class="link-card">
+            <h3>Окно в Европу: Архитектура текста</h3>
+            <p>Взгляд на структуру сюжета и законы современной драматургии.</p>
+        </a>
+        <a href="https://www.spb.kp.ru/daily/27002/4064595/" target="_blank" class="link-card">
+            <h3>КП: Сценарий как документ</h3>
+            <p>Об экранизации «Ненастья» Алексея Иванова.</p>
+        </a>
+        <a href="https://www.youtube.com/live/YmzQvRwz5T4" target="_blank" class="link-card">
+            <h3>Эклеры Голициной: Личный путь</h3>
+            <p>Связь музыки и темпоритма текста.</p>
+        </a>
+    </section>
+
+    <section>
+        <h2>Образование</h2>
+        <div class="course-box">
+            <h3>«Сценарное мастерство — универсальный навык»</h3>
+            <p>Курс по архитектуре истории для проектирования сюжетов любой сложности.</p>
+            <div class="btn-group">
+                <a href="https://kinocourse.com/screenwritercourse/?utm_source=it" target="_blank" class="btn btn-outline">Узнать подробнее</a>
+                <a href="https://yookassa.ru/my/i/aWZgui7ZSDip/l" target="_blank" class="btn btn-white">Записаться на курс</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="socials">
+            <a href="https://www.kinopoisk.ru/name/1577484/" target="_blank">Кинопоиск</a>
+            <a href="https://www.imdb.com/name/nm3170757/" target="_blank">IMDb</a>
+            <a href="https://t.me/TILKIN_SCREENWRITING" target="_blank">Telegram</a>
+            <a href="https://t.me/itilkin" target="_blank">Личка</a>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
