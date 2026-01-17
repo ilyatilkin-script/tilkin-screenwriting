@@ -34,6 +34,13 @@
         .socials a { color: var(--secondary); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         @media (max-width: 900px) { .poster-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 600px) { .poster-grid { grid-template-columns: repeat(2, 1fr); } .btn { width: 100%; } }
+        .news-block { background: #161616; padding: 25px; margin: 40px 0; border: 1px solid var(--border); border-radius: 8px; }
+    .news-item { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
+    .news-item:last-child { border-bottom: none; margin-bottom: 0; }
+    .news-date { color: var(--secondary); font-size: 0.8em; display: block; text-transform: uppercase; letter-spacing: 1px; }
+    .news-title { font-weight: bold; font-size: 1.2em; display: block; margin: 8px 0; color: var(--text); }
+    .news-text { font-size: 0.9em; line-height: 1.5; color: var(--text); opacity: 0.8; }
+    .btn-news { display: inline-block; padding: 10px 20px; background: var(--text); color: var(--bg); text-decoration: none; border-radius: 4px; font-size: 0.8em; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -43,7 +50,23 @@
         <h1>Илья Тилькин</h1>
         <div class="profession">Киносценарист · Драматург</div>
     </header>
+    <section class="news-block">
+    <h2 style="margin-top:0; color: var(--text);">Новости</h2>
 
+    <div class="news-item">
+        <span class="news-date">29 января 2026</span>
+        <span class="news-title">Запуск авторского курса «Сценарное мастерство — универсальный навык»</span>
+        <p class="news-text">Старт уникального онлайн-обучения, где я поделюсь инструментами создания историй, которые работают не только в кино, но и в жизни. Подробная программа и запись доступны на сайте курса.</p>
+        <a href="ССЫЛКА_НА_КУРС" target="_blank" class="btn-news">Подробности курса</a>
+    </div>
+
+    <div class="news-item">
+        <span class="news-date">Декабрь 2025</span>
+        <span class="news-title">Завершены съемки фантастической драмы «Вегетация»</span>
+        <p class="news-text">Okko и Продюсерская компания «Среда» завершили съемки сериала по мотивам книги Алексея Иванова. Восьмисерийный проект снят полностью на пленку. Автор сценария и шоураннер – Илья Тилькин.</p>
+        <a href="https://www.kino-teatr.ru/kino/news/y2025/12-3/39897/" target="_blank" class="btn-news">Подробности на Кино-театр.ру</a>
+    </div>
+</section>
     <section>
         <h2>Избранная фильмография</h2>
         <div class="poster-grid">
