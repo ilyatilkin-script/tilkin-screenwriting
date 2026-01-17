@@ -56,14 +56,32 @@
         .link-card h3 { font-size: 1.4rem; margin: 0 0 8px 0; font-weight: normal; color: var(--accent); }
         .link-card p { font-size: 0.95rem; color: var(--secondary); margin: 0; }
 
+        /* ОБНОВЛЕННЫЙ БЛОК КУРСА */
         .course-box { background: #161616; padding: 60px 40px; border: 1px solid var(--border); border-radius: 12px; text-align: center; }
-        .course-box h3 { font-size: 2rem; margin-top: 0; line-height: 1.2; font-weight: normal; }
-        .course-features { list-style: none; padding: 0; margin: 30px auto; max-width: 500px; text-align: left; }
-        .course-features li { margin-bottom: 15px; padding-left: 25px; position: relative; color: var(--secondary); font-size: 1.1rem; }
-        .course-features li::before { content: "—"; position: absolute; left: 0; color: var(--secondary); }
-
-        .pay-btn { display: inline-block; background: #fff; color: #000; padding: 20px 45px; text-decoration: none; font-family: sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; border-radius: 4px; transition: 0.3s; margin-top: 20px; }
-        .pay-btn:hover { background: var(--secondary); }
+        .course-box h3 { font-size: 2.2rem; margin-top: 0; line-height: 1.2; font-weight: normal; margin-bottom: 20px; }
+        .course-box p.subtitle { color: var(--secondary); font-size: 1.1rem; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .course-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 18px 35px; 
+            text-decoration: none; 
+            font-family: sans-serif; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-size: 0.85rem; 
+            border-radius: 4px; 
+            transition: 0.3s; 
+            min-width: 200px;
+        }
+        
+        .btn-primary { background: #fff; color: #000; border: 1px solid #fff; }
+        .btn-primary:hover { background: #ccc; border-color: #ccc; }
+        
+        .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--border); }
+        .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
 
         footer { text-align: center; padding-top: 40px; border-top: 1px solid var(--border); }
         .socials { display: flex; justify-content: center; gap: 30px; font-family: sans-serif; font-size: 0.75rem; }
@@ -73,6 +91,7 @@
             .poster-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
             h1 { font-size: 2rem; }
             .course-box { padding: 40px 20px; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -134,7 +153,7 @@
         <h2>Материалы и интервью</h2>
         <a href="https://doc.ru/ilya-tilkin-intervyu/" target="_blank" class="link-card">
             <h3>Документальное Кино: Изнанка индустрии</h3>
-            <p>О системных ошибках индустрии, уважении к слову и о том, почему зритель всегда прав.</p>
+            <p>Илья Тилькин о системных ошибках индустрии, уважении к Слову и о том, почему зритель всегда прав.</p>
         </a>
         <a href="https://youtu.be/C6F7e6XH8jc" target="_blank" class="link-card">
             <h3>Sheinkin40: Искусство проектирования</h3>
@@ -146,21 +165,7 @@
         <h2>Образование</h2>
         <div class="course-box">
             <h3>«Сценарное мастерство — универсальный навык»</h3>
-            <ul class="course-features">
-                <li>Проверка жизнеспособности замысла</li>
-                <li>Архитектура сюжета и законы драмы</li>
-                <li>Техника создания живых диалогов</li>
-            </ul>
-            <a href="https://yookassa.ru/my/i/aWZgui7ZSDip/l" target="_blank" class="pay-btn">Записаться на курс</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="socials">
-            <a href="https://t.me/TILKIN_SCREENWRITING" target="_blank">Telegram-канал</a>
-            <a href="https://t.me/itilkin" target="_blank">Написать лично</a>
-        </div>
-    </footer>
-</div>
-</body>
-</html>
+            <p class="subtitle">Авторский курс по архитектуре истории для тех, кто хочет научиться проектировать сюжеты любой сложности.</p>
+            
+            <div class="course-buttons">
+                <a href="https://kinoc
