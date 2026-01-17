@@ -155,7 +155,35 @@
             </div>
         </div>
     </section>
+<section>
+    <h2>Фотографии</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Арсеньев_Playback.JPG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Арсеньев_с.jpg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Арсеньев_хлопушка.jpg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Воин_playback.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Годунов_playback.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Голем_хлопушка.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Короче02.png"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Крестный_хлопушка.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/МН.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Парма_хлопушка.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Протокол_хлопушка.jpg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Стар.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Бондарчук.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/Тилькин_Миронов.JPG"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/арсеньев_зима.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/выборг01.jpg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/доска.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/короче01.jpeg"></div>
+        <div class="gallery-item" onclick="showImg(this)"><img src="img/парма_playback.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/ненастье.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/распутин.jpeg"></div>
+        <div class="gallery-item" onclick="openPhoto(this)"><img src="img/янковский.jpeg"></div>
+    </div>
+</section>
 
+<div id="lightbox" onclick="this.style.display='none'"><img id="limg"></div>
     <footer>
         <div class="socials">
             <a href="https://www.kinopoisk.ru/name/1629112/" target="_blank">Кинопоиск</a>
@@ -165,5 +193,11 @@
         </div>
     </footer>
 </div>
+    <script>
+    function openPhoto(el) {
+        document.getElementById("limg").src = el.querySelector('img').src;
+        document.getElementById("lightbox").style.display = "flex";
+    }
+</script>
 </body>
 </html>
