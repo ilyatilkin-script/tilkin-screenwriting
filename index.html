@@ -3,63 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ilya Tilkin: Acclaimed screenwriter of the IMAX epic 'Stalingrad', 'Heart of Parma', and 'S'parta' (Netflix). Ilya shares his 20-year expertise through his signature course, teaching story architecture as a universal skill.">
+    <meta name="description" content="Илья Тилькин: сценарист «Сталинграда», «Сердца Пармы» и «Спарты». Авторский курс сценарного мастерства.">
     <title>Илья Тилькин | Киносценарист и Драматург</title>
     <style>
         :root { --bg: #0d0d0d; --text: #ffffff; --secondary: #a0a0a0; --accent: #ffffff; --border: #262626; }
         body { font-family: 'Georgia', serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
         
-        /* ЦЕНТРИРОВАННАЯ ШАПКА */
-        header { 
-            text-align: center; 
-            margin-bottom: 80px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
+        header { text-align: center; margin-bottom: 80px; display: flex; flex-direction: column; align-items: center; }
+        
         .profile-pic { 
-            width: 220px; /* Увеличенный размер */
-            height: 220px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 2px solid var(--border); 
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Глубина */
+            width: 240px; height: 240px; border-radius: 50%; object-fit: cover; 
+            object-position: center 10%; border: 2px solid var(--border); 
+            margin-bottom: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            background-color: #111;
         }
+        
         h1 { font-size: 2.8rem; font-weight: normal; margin: 0; letter-spacing: -1px; text-transform: uppercase; }
         .profession { font-family: sans-serif; color: var(--secondary); text-transform: uppercase; letter-spacing: 5px; font-size: 0.9rem; margin-top: 10px; }
 
         section { margin-bottom: 90px; }
         h2 { font-family: sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
         
-        .film-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        .film-item { font-size: 1rem; padding: 20px; border: 1px solid var(--border); border-radius: 4px; background: #111; }
-        .film-item span { color: var(--secondary); display: block; font-size: 0.85rem; margin-top: 5px; }
+        .poster-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 25px; 
+            margin-bottom: 40px; 
+        }
+        .poster-item { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 6px; 
+            aspect-ratio: 2/3; 
+            background: #111;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid var(--border);
+        }
+        .poster-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
+        .poster-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .poster-info {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            padding: 15px; text-align: left;
+        }
+        .poster-info h4 { margin: 0; font-size: 1rem; font-weight: normal; color: #fff; }
+        .poster-info span { font-family: sans-serif; font-size: 0.7rem; color: var(--secondary); text-transform: uppercase; }
 
-        .link-card { display: block; text-decoration: none; color: var(--text); margin-bottom: 40px; transition: 0.3s; }
-        .link-card:hover { opacity: 0.7; transform: translateY(-3px); }
+        .link-card { display: block; text-decoration: none; color: var(--text); margin-bottom: 40px; transition: 0.3s; padding: 20px; border: 1px solid transparent; border-radius: 8px; }
+        .link-card:hover { border-color: var(--border); background: #111; }
         .link-card h3 { font-size: 1.4rem; margin: 0 0 8px 0; font-weight: normal; color: var(--accent); }
-        .link-card p { font-size: 1rem; color: var(--secondary); margin: 0; }
+        .link-card p { font-size: 0.95rem; color: var(--secondary); margin: 0; }
 
-        .course-box { background: #1a1a1a; padding: 60px 40px; border: 1px solid var(--border); border-radius: 8px; text-align: center; }
-        .course-box h3 { font-size: 2rem; margin-top: 0; line-height: 1.2; }
-        .course-features { list-style: none; padding: 0; margin: 30px auto; max-width: 500px; text-align: left; font-size: 1.1rem; }
-        .course-features li { margin-bottom: 15px; padding-left: 25px; position: relative; color: var(--secondary); }
-        .course-features li::before { content: "•"; position: absolute; left: 0; color: var(--accent); }
+        .course-box { background: #161616; padding: 60px 40px; border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+        .course-box h3 { font-size: 2rem; margin-top: 0; line-height: 1.2; font-weight: normal; }
+        .course-features { list-style: none; padding: 0; margin: 30px auto; max-width: 500px; text-align: left; }
+        .course-features li { margin-bottom: 15px; padding-left: 25px; position: relative; color: var(--secondary); font-size: 1.1rem; }
+        .course-features li::before { content: "—"; position: absolute; left: 0; color: var(--secondary); }
 
-        .pay-wrapper { margin-top: 40px; }
-        .pay-btn { display: inline-block; background: var(--accent); color: #000; padding: 20px 50px; text-decoration: none; font-family: sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; border-radius: 50px; transition: 0.3s; }
-        .pay-btn:hover { background: #ddd; transform: scale(1.05); }
+        .pay-btn { display: inline-block; background: #fff; color: #000; padding: 20px 45px; text-decoration: none; font-family: sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; border-radius: 4px; transition: 0.3s; margin-top: 20px; }
+        .pay-btn:hover { background: var(--secondary); }
 
-        .socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; font-family: sans-serif; font-size: 0.8rem; }
-        .socials a { color: var(--secondary); text-decoration: none; text-transform: uppercase; border-bottom: 1px solid transparent; transition: 0.3s; padding-bottom: 5px; }
-        .socials a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+        footer { text-align: center; padding-top: 40px; border-top: 1px solid var(--border); }
+        .socials { display: flex; justify-content: center; gap: 30px; font-family: sans-serif; font-size: 0.75rem; }
+        .socials a { color: var(--secondary); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; }
 
         @media (max-width: 600px) { 
-            h1 { font-size: 2rem; } 
-            .film-grid { grid-template-columns: 1fr; } 
-            .profile-pic { width: 180px; height: 180px; }
+            .poster-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            h1 { font-size: 2rem; }
+            .course-box { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -73,49 +86,79 @@
 
     <section>
         <h2>Избранная фильмография</h2>
-        <div class="film-grid">
-            <div class="film-item">Сталинград <span>Фильм, 2013</span></div>
-            <div class="film-item">Ненастье <span>Сериал, 2018</span></div>
-            <div class="film-item">Тихий Дон <span>Сериал, 2015</span></div>
-            <div class="film-item">Спарта <span>Сериал, 2018 (Netflix)</span></div>
-            <div class="film-item">Годунов <span>Сериал, 2018</span></div>
-            <div class="film-item">Сердце Пармы <span>Фильм, 2022</span></div>
-            <div class="film-item">Григорий Р. <span>Сериал, 2014</span></div>
-            <div class="film-item">Человек у окна <span>Фильм, 2010</span></div>
+        <div class="poster-grid">
+            <div class="poster-item">
+                <img src="stalingrad.jpg" alt="Сталинград">
+                <div class="poster-info"><h4>Сталинград</h4><span>Фильм, 2013</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="parma.jpg" alt="Сердце Пармы">
+                <div class="poster-info"><h4>Сердце Пармы</h4><span>Фильм, 2022</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="tellher.jpg" alt="Скажи ей">
+                <div class="poster-info"><h4>Скажи ей</h4><span>Фильм, 2020</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="sparta.jpg" alt="Спарта">
+                <div class="poster-info"><h4>Спарта</h4><span>Netflix Original</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="librarian.jpg" alt="Библиотекарь">
+                <div class="poster-info"><h4>Библиотекарь</h4><span>Сериал, 2023</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="nenastie.jpg" alt="Ненастье">
+                <div class="poster-info"><h4>Ненастье</h4><span>Сериал, 2018</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="montevideo.jpg" alt="Единица Монтевидео">
+                <div class="poster-info"><h4>Единица Монтевидео</h4><span>Фильм, 2023</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="godunov.jpeg" alt="Годунов">
+                <div class="poster-info"><h4>Годунов</h4><span>Сериал, 2018</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="don.jpg" alt="Тихий Дон">
+                <div class="poster-info"><h4>Тихий Дон</h4><span>Сериал, 2015</span></div>
+            </div>
+            <div class="poster-item">
+                <img src="window.jpeg" alt="Человек у окна">
+                <div class="poster-info"><h4>Человек у окна</h4><span>Фильм, 2010</span></div>
+            </div>
         </div>
-        <p style="text-align: center;"><a href="https://www.kinopoisk.ru/name/1138852/" target="_blank" style="color: var(--secondary); font-size: 0.85rem; text-decoration: none; font-family: sans-serif; border-bottom: 1px solid #333;">Весь список на Кинопоиске →</a></p>
     </section>
 
     <section>
-        <h2>Интервью и материалы</h2>
-        <a href="https://youtu.be/C6F7e6XH8jc" target="_blank" class="link-card"><h3>Sheinkin40: Изнанка индустрии</h3><p>О создании масштабных проектов, работе над «Сталинградом» и профессиональном пути.</p></a>
-        <a href="https://www.spb.kp.ru/daily/27002/4064595/" target="_blank" class="link-card"><h3>КП: Метод адаптации</h3><p>Опыт работы с прозой Алексея Иванова и превращении смыслов в визуальные образы.</p></a>
-        <a href="https://oknofest.com/novosti/ilya-tilkin-lyuboj-dialog-mozhno-vosprinimat-kak-remarku" target="_blank" class="link-card"><h3>Окно в Европу: Архитектура текста</h3><p>Профессиональный взгляд на структуру сюжета и законы современной драматургии.</p></a>
-        <a href="https://www.youtube.com/live/YmzQvRwz5T4" target="_blank" class="link-card"><h3>Эклеры Голициной: Личный путь</h3><p>Музыкальное образование как фундамент для понимания темпоритма сценария.</p></a>
+        <h2>Материалы и интервью</h2>
+        <a href="https://doc.ru/ilya-tilkin-intervyu/" target="_blank" class="link-card">
+            <h3>Документальное Кино: Изнанка индустрии</h3>
+            <p>О системных ошибках индустрии, уважении к слову и о том, почему зритель всегда прав.</p>
+        </a>
+        <a href="https://youtu.be/C6F7e6XH8jc" target="_blank" class="link-card">
+            <h3>Sheinkin40: Искусство проектирования</h3>
+            <p>Большой разговор о создании «Сталинграда» и работе над крупными историческими проектами.</p>
+        </a>
     </section>
 
     <section>
-        <h2>Обучение</h2>
+        <h2>Образование</h2>
         <div class="course-box">
             <h3>«Сценарное мастерство — универсальный навык»</h3>
-            <p style="color: var(--secondary); font-style: italic; margin-bottom: 30px;">Курс для тех, кто хочет научиться проектировать истории любой сложности.</p>
             <ul class="course-features">
-                <li>Поиск и проверка жизнеспособного замысла</li>
-                <li>Архитектура сюжета: от идеи до финального драфта</li>
-                <li>Психология персонажа и создание живых диалогов</li>
-                <li>Индустриальные стандарты и юридическая база</li>
+                <li>Проверка жизнеспособности замысла</li>
+                <li>Архитектура сюжета и законы драмы</li>
+                <li>Техника создания живых диалогов</li>
             </ul>
-            <div class="pay-wrapper">
-                <a href="https://yookassa.ru/my/i/aWZgui7ZSDip/l" target="_blank" class="pay-btn">Узнать подробнее и записаться</a>
-            </div>
+            <a href="https://yookassa.ru/my/i/aWZgui7ZSDip/l" target="_blank" class="pay-btn">Записаться на курс</a>
         </div>
     </section>
 
     <footer>
         <div class="socials">
             <a href="https://t.me/TILKIN_SCREENWRITING" target="_blank">Telegram-канал</a>
-            <a href="https://t.me/itilkin" target="_blank">Связаться лично</a>
-            <a href="mailto:itilkin@yandex.ru">Email</a>
+            <a href="https://t.me/itilkin" target="_blank">Написать лично</a>
         </div>
     </footer>
 </div>
