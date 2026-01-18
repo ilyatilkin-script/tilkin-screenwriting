@@ -151,6 +151,26 @@
     align-items: center; justify-content: center; 
 }
 #lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #444; }
+            .agent-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 24px;
+    border: 1px solid var(--secondary);
+    color: var(--text);
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.agent-btn:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
     </style>
 </head>
 <body>
@@ -159,6 +179,7 @@
         <img src="profile.jpg" alt="Илья Тилькин" class="profile-pic">
         <h1>Илья Тилькин</h1>
         <div class="profession">Кинодраматург · Режиссер · Шоураннер</div>
+        <a href="https://t.me/kurkinson" class="agent-btn" target="_blank">агент Анна Куркина</a>
     </header>
     <section class="news-block">
     <h2 style="margin-top:0; color: var(--text);">Новости</h2>
