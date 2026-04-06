@@ -188,7 +188,18 @@
     background: var(--text);
     color: #000;
 }
-            </style>
+           .news-subtitle {
+  margin-top: 36px;
+  margin-bottom: 18px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#news-feed .news-item {
+  margin-top: 0;
+} </style>
 </head>
 <body>
 <div class="container">
@@ -197,38 +208,28 @@
         <h1>Илья Тилькин</h1>
         <div class="profession">Кинодраматург · Режиссер · Шоураннер</div>
             </header>
-    <section class="news-block">
-    <h2 style="margin-top:0; color: var(--text);">Новости</h2>
+   <section class="news-block">
+  <h2 style="margin-top:0; color: var(--text);">Новости</h2>
 
-    <div class="news-item">
-        <span class="news-date">29 января 2026</span>
-        <span class="news-title">Запуск авторского курса «Сценарное мастерство — универсальный навык»</span>
-        <p class="news-text">Старт уникального онлайн-обучения, где я поделюсь инструментами создания историй, которые работают не только в кино, но и в жизни. Подробная программа и запись доступны на сайте курса.</p>
-        <a href="https://kinocourse.com/screenwritercourse/?utm_source=it" target="_blank" class="btn-news">Подробности курса</a>
-    </div>
+  <div class="news-item pinned-news-item">
+    <span class="news-date">29 января 2026</span>
+    <span class="news-title">Запуск авторского курса «Сценарное мастерство — универсальный навык»</span>
+    <p class="news-text">Старт уникального онлайн-обучения, где я поделюсь инструментами создания историй, которые работают не только в кино, но и в жизни. Подробная программа и запись доступны на сайте курса.</p>
+    <a href="https://kinocourse.com/screenwritercourse/?utm_source=it" target="_blank" class="btn-news">Подробности курса</a>
+  </div>
 
-    <div class="news-item">
-        <span class="news-date">Декабрь 2025</span>
-        <span class="news-title">Завершены съемки фантастической драмы «Вегетация»</span>
-        <p class="news-text">Okko и Продюсерская компания «Среда» завершили съемки сериала по мотивам книги Алексея Иванова. Восьмисерийный проект снят полностью на пленку. Автор сценария и шоураннер – Илья Тилькин.</p>
-        <a href="https://www.kino-teatr.ru/kino/news/y2025/12-3/39897/" target="_blank" class="btn-news">Подробности на Кино-театр.ру</a>
-    </div>
+  <div class="news-item pinned-news-item">
+    <span class="news-date">Декабрь 2025</span>
+    <span class="news-title">Завершены съемки фантастической драмы «Вегетация»</span>
+    <p class="news-text">Okko и Продюсерская компания «Среда» завершили съемки сериала по мотивам книги Алексея Иванова. Восьмисерийный проект снят полностью на пленку. Автор сценария и шоураннер — Илья Тилькин.</p>
+    <a href="https://www.kino-teatr.ru/kino/news/y2025/12-3/3987/" target="_blank" class="btn-news">Подробности на Кино-театр.ру</a>
+  </div>
+
+  <h3 class="news-subtitle">Публикации в СМИ</h3>
+  <div id="news-feed">
+    <p class="news-text">Загрузка публикаций...</p>
+  </div>
 </section>
-    <section>
-        <h2>Избранная фильмография</h2>
-        <div class="poster-grid">
-            <div class="poster-item"><img src="stalingrad.jpg"><div class="poster-info">Сталинград</div></div>
-            <div class="poster-item"><img src="parma.jpg"><div class="poster-info">Сердце Пармы</div></div>
-            <div class="poster-item"><img src="tellher.jpg"><div class="poster-info">Скажи ей</div></div>
-            <div class="poster-item"><img src="sparta.jpg"><div class="poster-info">Спарта</div></div>
-            <div class="poster-item"><img src="librarian.jpg"><div class="poster-info">Библиотекарь</div></div>
-            <div class="poster-item"><img src="nenastie.jpg"><div class="poster-info">Ненастье</div></div>
-            <div class="poster-item"><img src="montevideo.jpg"><div class="poster-info">Единица Монтевидео</div></div>
-            <div class="poster-item"><img src="godunov.jpeg"><div class="poster-info">Годунов</div></div>
-            <div class="poster-item"><img src="don.jpg"><div class="poster-info">Тихий Дон</div></div>
-            <div class="poster-item"><img src="window.jpeg"><div class="poster-info">Человек у окна</div></div>
-        </div>
-    </section>
 
     <section>
         <h2>Материалы и интервью</h2>
@@ -345,5 +346,57 @@
         document.getElementById("lightbox").style.display = "flex";
     }
 </script>
-</body>
+<script>
+  const rssUrl = 'https://www.google.com/alerts/feeds/04003831686200873047/17314871222696284090';
+  const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('ru-RU', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text || '';
+    return div.innerHTML;
+  }
+
+  function shorten(text, maxLength = 220) {
+    if (!text) return '';
+    const clean = text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    if (clean.length <= maxLength) return clean;
+    return clean.slice(0, maxLength).trim() + '...';
+  }
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('news-feed');
+
+      if (!data.items || !data.items.length) {
+        container.innerHTML = '<p class="news-text">Новых публикаций пока нет.</p>';
+        return;
+      }
+
+      const items = data.items.slice(0, 5);
+
+      container.innerHTML = items.map(item => `
+        <div class="news-item">
+          <span class="news-date">${formatDate(item.pubDate)}</span>
+          <span class="news-title">${escapeHtml(item.title)}</span>
+          <p class="news-text">${escapeHtml(shorten(item.description || item.content || ''))}</p>
+          <a href="${item.link}" target="_blank" class="btn-news">Читать подробнее</a>
+        </div>
+      `).join('');
+    })
+    .catch(error => {
+      document.getElementById('news-feed').innerHTML =
+        '<p class="news-text">Не удалось загрузить публикации.</p>';
+      console.error(error);
+    });
+</script></body>
 </html>
