@@ -211,13 +211,14 @@
    <section class="news-block">
   <h2 style="margin-top:0; color: var(--text);">Новости</h2>
 
-<div class="news-item">
+<div class="news-item pinned-news-item">
+  <span class="news-date">6 апреля 2026</span>
   <h3>Сериал «Вегетация» выйдет в 2026 году</h3>
   <p>
     Постапокалиптический сериал «Вегетация», экранизация романа Алексея Иванова, готовится к премьере на платформе Okko. Действие разворачивается в будущем на Урале, где мутировавший лес стал источником ценного топлива, а за ресурсы ведут борьбу экспедиции и бригады лесорубов.
   </p>
   <p>
-    В центре сюжета — экспедиция бригадира Типалова, отправляющегося на поиски редких деревьев вместе с командой, у каждого из участников которой свои цели. Сериал сочетает элементы фантастики, драмы и постапокалипсиса. :contentReference[oaicite:0]{index=0}
+    В центре сюжета — экспедиция бригадира Типалова, отправляющегося на поиски редких деревьев вместе с командой, у каждого из участников которой свои цели. Сериал сочетает элементы фантастики, драмы и постапокалипсиса. 
   </p>
   <p>
     Шоураннером проекта выступил Илья Тилькин, режиссер — Максим Свешников. В главных ролях: Алексей Серебряков, Денис Косиков и Ксения Трейстер. Сериал будет состоять из 8 серий. 
@@ -246,10 +247,6 @@
     <a href="https://www.kino-teatr.ru/kino/news/y2025/12-3/3987/" target="_blank" class="btn-news">Подробности на Кино-театр.ру</a>
   </div>
 
-  <h3 class="news-subtitle">Публикации в СМИ</h3>
-  <div id="news-feed">
-    <p class="news-text">Загрузка публикаций...</p>
-  </div>
 </section>
 
     <section>
@@ -367,127 +364,5 @@
         document.getElementById("lightbox").style.display = "flex";
     }
 </script>
-<script>
-  const feeds = [
-    'https://www.google.com/alerts/feeds/04003831686200873047/17314871222696284090',
-    'https://news.google.com/rss/search?q=%22%D0%98%D0%BB%D1%8C%D1%8F+%D0%A2%D0%B8%D0%BB%D1%8C%D0%BA%D0%B8%D0%BD%22&hl=ru&gl=RU&ceid=RU:ru',
-    'https://news.google.com/rss/search?q=%22Ilya+Tilkin%22&hl=en&gl=US&ceid=US:en'
-  ];
-
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    if (isNaN(date)) return '';
-    return date.toLocaleDateString('ru-RU', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
-  }
-
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text || '';
-    return div.innerHTML;
-  }
-
-  function shorten(text, maxLength = 220) {
-    if (!text) return '';
-    const clean = text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-    if (clean.length <= maxLength) return clean;
-    return clean.slice(0, maxLength).trim() + '...';
-  }
-
-  function normalizeUrl(url) {
-    try {
-      const u = new URL(url);
-      u.hash = '';
-      return u.toString();
-    } catch {
-      return url || '';
-    }
-  }
-
-  function isRelevant(item) {
-    const text = `${item.title} ${item.description}`.toLowerCase();
-    return (
-      text.includes('илья тилькин') ||
-      text.includes('ilya tilkin')
-    );
-  }
-
-  async function loadFeed(feedUrl) {
-    const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(feedUrl);
-    const response = await fetch(proxyUrl);
-    const data = await response.json();
-
-    if (!data.contents) return [];
-
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, 'text/xml');
-    const items = Array.from(xml.querySelectorAll('item'));
-
-    return items.map(item => ({
-      title: item.querySelector('title')?.textContent?.trim() || '',
-      link: item.querySelector('link')?.textContent?.trim() || '',
-      pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
-      description:
-        item.querySelector('description')?.textContent?.trim() ||
-        item.querySelector('content\\:encoded')?.textContent?.trim() ||
-        ''
-    }));
-  }
-
-  async function loadAllNews() {
-    const container = document.getElementById('news-feed');
-
-    try {
-      const results = await Promise.allSettled(feeds.map(loadFeed));
-
-      let allItems = [];
-      results.forEach(result => {
-        if (result.status === 'fulfilled' && Array.isArray(result.value)) {
-          allItems = allItems.concat(result.value);
-        }
-      });
-
-      allItems = allItems
-        .filter(item => item.title && item.link)
-        .filter(isRelevant);
-
-      const seen = new Set();
-      const uniqueItems = [];
-
-      for (const item of allItems) {
-        const key = normalizeUrl(item.link).toLowerCase() + '|' + item.title.toLowerCase();
-        if (!seen.has(key)) {
-          seen.add(key);
-          uniqueItems.push(item);
-        }
-      }
-
-      uniqueItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-
-      const finalItems = uniqueItems.slice(0, 6);
-
-      if (!finalItems.length) {
-        container.innerHTML = '<p class="news-text">Новых публикаций пока нет.</p>';
-        return;
-      }
-
-      container.innerHTML = finalItems.map(item => `
-        <div class="news-item">
-          <span class="news-date">${escapeHtml(formatDate(item.pubDate))}</span>
-          <span class="news-title">${escapeHtml(item.title)}</span>
-          <p class="news-text">${escapeHtml(shorten(item.description))}</p>
-          <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener noreferrer" class="btn-news">Читать подробнее</a>
-        </div>
-      `).join('');
-    } catch (error) {
-      container.innerHTML = '<p class="news-text">Не удалось загрузить публикации.</p>';
-      console.error('News feed error:', error);
-    }
-  }
-
-  loadAllNews();
-</script></body>
+</body>
 </html>
